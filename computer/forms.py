@@ -5,6 +5,7 @@ from .models import *
 class ComputerForm(forms.ModelForm):
     class Meta:
         model = Computer
-        fields ='__all__'
+        fields =['computer_code', 'computer', 'computer_specification', 'brand', 'quantity', 'unit_rate']
+        
 
         

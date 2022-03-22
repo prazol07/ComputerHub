@@ -5,11 +5,17 @@ class ComputerBrand(models.Model):
     brand_name=models.CharField(max_length=100)
     logo=models.ImageField(upload_to="static/img")
 
+    def __str__(self):
+        return self.brand_name
+
 class ComputerSpecification(models.Model):
     processor_generation=models.CharField(max_length=50)
     price_min=models.IntegerField()
     price_max=models.IntegerField()
     ram=models.IntegerField()
+
+    def __str__(self):
+        return self.processor_generation
 
 class ComputerGeneration(models.Model):
     gen=models.CharField(max_length=100)   
@@ -22,4 +28,4 @@ class Computer(models.Model):
     quantity=models.IntegerField()
     unit_rate=models.IntegerField()
     total_price=models.IntegerField()
-
+    

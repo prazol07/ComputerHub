@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/0a2c1baba4.js"></script>
+
 
     <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -22,8 +25,17 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
 <body>
-{% block navbar %}
+{% block navbar %}~
 {% endblock %}
+
+{% if messages %}
+{%for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " id="message" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" onclick="closeNotification()"  class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{%endfor%}
+{%endif%}
 
 {% block content %}
 {% endblock %}
@@ -33,7 +45,7 @@
  <!-- loader -->
  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+ 
  <script src="{% static '/js/jquery.min.js' %}"></script>
  <script src="{% static '/js/jquery-migrate-3.0.1.min.js' %}"></script>
  <script src="{% static '/js/popper.min.js' %}"></script>
@@ -51,6 +63,14 @@
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
  <script src="{% static '/js/google-map.js' %}"></script>
  <script src="{% static '/js/main.js' %}"></script>
+
+ <script>
+  function closeNotification()
+  {
+    var messageob = document.querySelector('#message');
+    messageob.style.display = "none";
+  }
+</script>
    
 </body>
 </html>

@@ -32,7 +32,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                              {% for computer in object %}
+                              {% for computer in object_list %}
             
                             <tr class="">
 
@@ -45,7 +45,7 @@
                             </td>
 
                               <td class="product-name">
-                                 <a href={% url 'search' computer.brand.brand_name %}><h3>{{computer.brand.brand_name}}</h3></a>
+                                  <h3>{{computer.brand_name}}</h3>
                               </td>
                               
                               <td class="w-25">
@@ -104,5 +104,6 @@
               </div>
               </div>
           </div>
-  </section>       
+  </section>
+                          
 {% endblock %}
