@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body,
+    html {
+        max-width: 100%;
+    }
+
+    .user_card {
+        width: 550px;
+        height: 550px;
+        margin-top: 75px;
+        margin-bottom: 75;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+    }
+</style>
+
+
+
+<!-- <body style="background-color: #ddd3d3 ;" style="overflow: auto; width : 200px; height : 50px;"> -->
+
+<body style=" position: relative;
+    min-height: 100vh;">
+    <div class="d-flex justify-content-center">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h5 id="form-title">Specification of computers</h5>
+            </div>
+            <div class="d-flex justify-content-center form group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <br />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

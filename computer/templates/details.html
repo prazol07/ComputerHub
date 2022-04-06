@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body style=" position: relative;
+min-height: 100vh;">
+    <div class="container">
+        <div class="breadcrumb1">
+            <ul style="margin-top: 50px;">
+                <!-- <a href="{% url 'index' %}"><i class="fa fa-home home_1 dark"></i></a>
+         <span class="divider">&nbsp;|&nbsp;</span> -->
+            </ul>
+        </div>
+        <table class="table table-hover text-start fadeInDown">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Computer Code</th>
+                    <th scope="col">Brandname</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Computer Generation</th>
+                    <th scope="col">Unit rate</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in object_list %}
+                <tr>
+                    <td>{{ obj.computercode }}</td>
+                    <td>{{ obj.brandname }}</td>
+                    <td>{{ obj.quantity }}</td>
+                    <td>{{ obj.computer.generation }}</td>
+                    <td>Rs {{ obj.unitrate }}</td>
+                    <td>Rs {{ obj.totalprice }}</td>
+                    <td>
+
+                        <a class="btn btn-warning" href="{% url 'update' obj.id %}"><i class="fa fa-pencil-square-o"
+                                aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-warning" href="{% url 'individualdetail' obj.id %}"><i class="bi bi-info"
+                                aria-hidden="true"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-info" viewBox="0 0 16 16">
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                            </svg>
+                        </a>
+                        <a class="btn btn-info " href="{% url 'delete' obj.id %}">Delete</a>
+
+                    </td>
+                </tr>
+
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}
