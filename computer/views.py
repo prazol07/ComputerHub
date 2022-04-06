@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .models import ComputerBrands
-from .models import ComputerSpecification
 from .models import Computer
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.contrib import messages
@@ -75,34 +74,17 @@ class LogoDetailView(ListView):
     model=Computer
     template_name = "logodetail.html"
 
-    def get_queryset(self):
+    def get_context_data(self):
         val = self.kwargs.get("brandname")
-        brand = Computer.objects.filter(brandname__icontains=val)   
-        return brand
+        brand = Computer.objects.filter(brandname__icontains=val)  
+        context={'brand':brand,
+                'val':val
+        } 
+        return context
+
        
 class DeleteComputer(DeleteView):
     model=Computer
     template_name= "delete.html"
     def get_success_url(self):
         return reverse("details")
-    
-        
-
-# def form(request):
-#     if request.method == 'POST':
-#         postDate = request.POST
-#         computercode=postDate.get('computercode')
-#         brandname = postDate.get('brandname')
-#         quantity = postDate.get('quantity')
-#         unitrate = postDate.get('unitrate')
-#         totalprice=postDate.get('totalprice')
-
-#         order_info = Computer(computercode=computercode,brandname=brandname,
-#                            quantity=quantity,
-#                            unitrate=unitrate, totalprice=totalprice)
-#         order_info.register()
-
-#         messages.info(request,"successfully ordered.")
-
-#     else:
-#         return render(request, 'form.html')

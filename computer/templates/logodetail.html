@@ -6,13 +6,7 @@ min-height: 100vh;">
     <div class="container">
         <div class="breadcrumb1">
             <ul style="margin-top: 50px;">
-                <!-- <a href="{% url 'index' %}"><i class="fa fa-home home_1 dark"></i></a> -->
-                <!-- <span class="divider">&nbsp;|&nbsp;</span> -->
-                {% if object_list is not null %}
-                    {% for b in object_list %}
-                    <h1>List of {{b.brandname}} computers</h1>
-                    {% endfor %}
-                {% endif %}
+                 <h1>List of {{val}} computers</h1>
             </ul>
         </div>
         <table class="table table-hover text-start fadeInDown">
@@ -27,7 +21,7 @@ min-height: 100vh;">
                 </tr>
             </thead>
             <tbody>
-                {% for b in object_list %}
+                {% for b in brand %}
                 <tr>
                     <td>{{ b.computercode }}</td>
                     <td>{{ b.brandname }}</td>
